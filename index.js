@@ -2,7 +2,7 @@
 // prompt the user
 const inquirer = require('inquirer');
 // make requests
-const request = require('axios');
+const request = require('axios').default;
 
 const questions = [
   {
@@ -62,11 +62,12 @@ function writeToFile(fileName, data) {
 
 function init() {
   // prompt the user for their GitHub username
+  if(false)
   inquirer
   .prompt(questions)
   .then(answers => {
     console.log(answers);
-
+    makeRequest(answers.username);
   })
   .catch(error => {
     if(error.isTtyError) {
@@ -75,8 +76,36 @@ function init() {
       // Something else when wrong
     }
   });
-
+  console.log(makeRequest('mjb527'));
   // github badge: [![GitHub version](https://badge.fury.io/gh/Naereen%2FStrapDown.js.svg)](https://github.com/Naereen/StrapDown.js)
+
+}
+
+
+// return the user's email address and avatar's url in an array [email, avatar]
+function makeRequest(username) {
+  const returnThis = [];
+
+  request.get('https://api.github.com/users/' + username, {
+    params: {
+      Accept: 'application/vnd.github.v3+json', // specify v3 of the api
+
+    }
+  })
+  .then(function (response) {
+    // handle success
+    returnThis.push(response.data.email);
+    returnThis.push(response.data.avatar_url);
+    console.log(response.data.email);
+    console.log(response.data.avatar_url);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .finally(function () {
+    return returnThis;
+});
 
 }
 
