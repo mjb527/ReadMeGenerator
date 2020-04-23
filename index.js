@@ -1,8 +1,12 @@
 
 // prompt the user
-const inquirer = require('inquirer');
+const question = require('./utils/question.js');
 // make requests
-const request = require('axios').default;
+const api = require('./utils/api.js');
+// build markdown
+const md = require('./utils/generateMarkdown.js');
+// file system
+const fs = require('fs');
 
 const questions = [
   {
@@ -57,56 +61,40 @@ const questions = [
   }
 ];
 
-function writeToFile(fileName, data) {
-}
 
+// "main" method
 function init() {
-  // prompt the user for their GitHub username
-  if(false)
-  inquirer
-  .prompt(questions)
-  .then(answers => {
-    console.log(answers);
-    makeRequest(answers.username);
-  })
-  .catch(error => {
-    if(error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else when wrong
-    }
+  const data = question.inquire(questions);
+  // return an array [email, avatar]
+  const response = api.request(data.username);
+
+
+  // if response was fine, set the email and avatar from the request
+  if(response !== null) {
+    data.email = response[0];
+    data.avatar = response[1];
+  }
+  // if there was an error, return
+  else return;
+
+  // generate the file content based on the data variable
+  const content = md.generateMarkdown(data);
+  if(content === null) return;
+  
+  // write the data to a file
+  writeToFile('README.md', content);
+
+}
+
+function writeToFile(fileName, data) {
+
+  fs.writeFile(fileName, data, function(error) {
+    if(error) console.log(error);
+    else console.log('Success!');
   });
-  console.log(makeRequest('mjb527'));
-  // github badge: [![GitHub version](https://badge.fury.io/gh/Naereen%2FStrapDown.js.svg)](https://github.com/Naereen/StrapDown.js)
+
 
 }
 
-
-// return the user's email address and avatar's url in an array [email, avatar]
-function makeRequest(username) {
-  const returnThis = [];
-
-  request.get('https://api.github.com/users/' + username, {
-    params: {
-      Accept: 'application/vnd.github.v3+json', // specify v3 of the api
-
-    }
-  })
-  .then(function (response) {
-    // handle success
-    returnThis.push(response.data.email);
-    returnThis.push(response.data.avatar_url);
-    console.log(response.data.email);
-    console.log(response.data.avatar_url);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .finally(function () {
-    return returnThis;
-});
-
-}
-
+// run program
 init();
