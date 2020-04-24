@@ -1,6 +1,6 @@
 
 // prompt the user
-const question = require('./utils/question.js');
+const question = require('./utils/questions.js');
 // make requests
 const api = require('./utils/api.js');
 // build markdown
@@ -23,11 +23,6 @@ const questions = [
     type: 'editor',
     name: 'description',
     message: 'Tell me about your project.'
-  },
-  {
-    type: 'input',
-    name: 'tableOfContents',
-    message: 'Give me a comma separated Table of Contents.'
   },
   {
     type: 'editor',
@@ -65,6 +60,7 @@ const questions = [
 // "main" method
 function init() {
   const data = question.inquire(questions);
+  console.log(data);
   // return an array [email, avatar]
   const response = api.request(data.username);
 
@@ -80,7 +76,7 @@ function init() {
   // generate the file content based on the data variable
   const content = md.generateMarkdown(data);
   if(content === null) return;
-  
+
   // write the data to a file
   writeToFile('README.md', content);
 

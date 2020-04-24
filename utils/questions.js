@@ -1,16 +1,18 @@
-
 const inquirer = require('inquirer');
 
-function inquire() {
-  inquirer
-  .prompt(questions )
-  .then(answers => {
-    return answers;
-  })
-  .catch(error => {
-    console.log("You didn't answer all the questions");
-    console.log(error);
-    return null;
-});
+// const inquire =
 
-module.exports = inquire;
+module.exports = {
+  inquire: questions => {
+      inquirer
+      .prompt(questions)
+      .then(answers => {
+        return answers;
+      })
+      .catch(error => {
+        console.log("You didn't answer all the questions");
+        console.log(error);
+        return null;
+    });
+}
+}
