@@ -1,5 +1,8 @@
 
 # ReadMeGenerator <a name="introduction"></a>
+
+[![Github Releases (by Release)](https://img.shields.io/github/downloads/Naereen/StrapDown.js/v1.0.0/total.svg)](https://GitHub.com/Naereen/StrapDown.js/releases/)
+
 #### __Author:__ mjb527
 #### __Email:__ No Email Listed
 ![mjb527 Avatar](https://avatars2.githubusercontent.com/u/30249734?v=4)
