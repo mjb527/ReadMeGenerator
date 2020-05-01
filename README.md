@@ -1,10 +1,9 @@
 
-=======
 # ReadMeGenerator <a name="introduction"></a>
 
 [![Generic badge](https://img.shields.io/badge/Version-1.0.0-blue.svg)](https://shields.io/)
 
->>>>>>> 5939f9ebc43a583106a0540a560d8e24cf7f7e20
+
 #### __Author:__ mjb527
 #### __Email:__ No Email Listed
 ![mjb527 Avatar](https://avatars2.githubusercontent.com/u/30249734?v=4)
