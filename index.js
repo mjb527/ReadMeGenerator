@@ -20,6 +20,11 @@ const questions = [
       message: 'What is the title of the project?'
     },
     {
+    type: 'input',
+    name: 'version',
+    message: 'What version is this?'
+    },
+    {
       type: 'editor',
       name: 'description',
       message: 'Tell me about your project.'

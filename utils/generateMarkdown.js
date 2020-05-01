@@ -5,6 +5,10 @@ module.exports = {
     try {
       return `
 # ${data.title} <a name="introduction"></a>
+
+[![Generic badge](https://img.shields.io/badge/Version-${data.version}-blue.svg)](https://shields.io/)
+
+
 #### __Author:__ ${data.username}
 #### __Email:__ ${data.email}
 ![${data.username} Avatar](${data.avatar})
@@ -16,6 +20,7 @@ module.exports = {
 4) [Usage](#usage)
 5) [License](#license)
 6) [Contributing](#contributing)
+7) [Tests](#tests)
 7) [Questions](#questions)
 
 ## Description <a name="description"></a>
@@ -32,6 +37,9 @@ ${data.license}
 
 ## Contributing <a name="contributing"></a>
 ${data.contributing}
+
+## Tests <a name="tests"></a>
+${data.tests}
 
 ## Questions <a name="questions"></a>
 ${data.questions}
