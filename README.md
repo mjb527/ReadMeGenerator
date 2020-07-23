@@ -42,5 +42,3 @@ Manual tests were run to check a README can be properly generated.
 
 ## Questions <a name="questions"></a>
 This is pretty straight forward to use and understand, but please create a pull request if there are any issues or message me for any questions.
-
-
