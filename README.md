@@ -5,7 +5,7 @@
 
 
 #### __Author:__ mjb527
-#### __Email:__ No Email Listed
+#### __Email:__ mbatko0914@gmail.com
 ![mjb527 Avatar](https://avatars2.githubusercontent.com/u/30249734?v=4)
 
 ## Table Of Contents
