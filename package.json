@@ -9,7 +9,7 @@
   "author": "Matt Batko",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "inquirer": "^6.3.1"
   }
 }
